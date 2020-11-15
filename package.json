@@ -1,0 +1,27 @@
+{
+  "name": "picture",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "axios": "^0.21.0",
+    "better-scroll": "^2.0.5",
+    "core-js": "^3.6.5",
+    "fastclick": "^1.0.6",
+    "nprogress": "^0.2.0",
+    "socket.io-client": "^2.3.1",
+    "vant": "^2.10.11",
+    "vue": "^2.6.11",
+    "vue-router": "^3.4.8",
+    "vuex": "^3.5.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "postcss-px-to-viewport": "^1.1.1",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
