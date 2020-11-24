@@ -20,17 +20,13 @@ export default {
     LoginFooter,
     Logo,
   },
-  methods: {},
   async created() {
     // 当组件一创建后就去请求对应的数据，如果处于有token'态，就直接登录
     // 刷新后验证token的合法性
-    let res = await this.$store.dispatch("getUserInfo", (tag) => {
-      // token不合法
-      if (tag == true) {
-        // 跳转到登陆页面
-        this.$router.replace("/index");
-      }
-    });
+    let token = localStorage.getItem("token");
+    if (token) {
+      this.$router.replace("/index");
+    }
   },
 };
 </script>

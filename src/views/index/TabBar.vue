@@ -14,9 +14,6 @@ export default {
     return {
       active:0
     }
-  },
-  methods:{
-    
   }
 };
 </script>

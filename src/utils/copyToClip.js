@@ -1,3 +1,8 @@
+/**
+ * @description: 复制到剪切板
+ * @param {*} content
+ * @return {*}
+ */
 function CopyToBord(content) {
   let copyDOM = document.createElement("div");
   copyDOM.innerText = content;

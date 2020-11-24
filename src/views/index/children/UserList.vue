@@ -3,7 +3,7 @@
     <scroll ref="scrolls" class="wrapper" @scrolls="locks" @scrEnd="ends">
       <user-list-item
         @touchstart.native="handleUser(item)"
-        @touchend.native="clear()"
+        @touchend.native="clear"
         v-for="item in users"
         :key="item._id"
         :user="item"
@@ -16,7 +16,7 @@
       @close="$store.commit('setCurrentID', '')"
       cancel-text="取消"
       v-model="isShow"
-      title="操作选项"
+      title="操作选项(请谨慎操作)"
       :actions="actions"
     >
     </van-action-sheet>
@@ -56,6 +56,10 @@ export default {
         },
         {
           name: "重置用户密码",
+          color: "#ee0a24",
+        },
+        {
+          name: "删除截图",
           color: "#ee0a24",
         },
       ],
@@ -144,7 +148,7 @@ export default {
           .catch(() => {
             return;
           });
-      } else {
+      } else if (e.name == "重置用户密码") {
         // 重置用户密码
         this.confirm({
           message: `确认重置${this.current.stu_name}的密码吗？重置后的密码为123456`,
@@ -166,6 +170,36 @@ export default {
             } else {
               this.$toast({
                 type: "fail",
+                message: res.msg,
+              });
+            }
+            this.isShow = false;
+            this.$store.commit("setCurrentID", "");
+          })
+          .catch(() => {
+            return;
+          });
+      } else {
+        // 重置用户密码
+        this.confirm({
+          message: `确认删除${this.current.stu_name}的截图吗？`,
+          title: "删除截图",
+        })
+          .then(async () => {
+            let res = await this.$request({
+              url: "/api/user/deletePicture/" + this.current._id,
+              method: "delete",
+            });
+            if (res.code == 200) {
+              this.$toast({
+                type: "success",
+                duration: 800,
+                message: res.msg,
+              });
+            } else {
+              this.$toast({
+                type: "fail",
+                duration: 800,
                 message: res.msg,
               });
             }

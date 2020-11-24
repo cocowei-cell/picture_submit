@@ -14,6 +14,11 @@ export default [
     component: () => import("@/views/regester/Regester"),
   },
   {
+    name: "modify",
+    path: "/modify",
+    component: () => import("@/views/Modify"),
+  },
+  {
     name: "index",
     path: "/index",
     redirect: "/index/mission",

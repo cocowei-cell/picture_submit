@@ -13,7 +13,7 @@ export default {
       // token不合法
       if (tag == false) {
         // 跳转到登陆页面
-        this.$router.replace("/login");
+        this.$router.push("/login");
         // 清除token
         localStorage.removeItem("token");
       }

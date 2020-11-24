@@ -129,7 +129,7 @@ export default {
         this.userinfo.unshift(admin[0]);
         setTimeout(() => {
           this.$refs.userListRef.refreshDOM();
-        }, 600);
+        }, 200);
         // 判断该用户是否是班级管理员
         if (this.userID == this.along_user) {
           this.isAdmin = true;
@@ -239,9 +239,11 @@ export default {
   },
   mounted() {
     // 进入班级 进行获取班级数据的请求
-    if (this.classID) {
-      this.getUser();
-    }
+    this.$nextTick(() => {
+      if (this.classID) {
+        this.getUser();
+      }
+    });
     // 监听链接到班级成功
     this.$soc.emit("login_class", {
       classID: this.classID,
